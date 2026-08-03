@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Esercitazione</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        #timer {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>❗❕❗ESERCITAZIONE❕❗❕</h1>
+    <div id="timer"></div>
+
+    <script>
+        (() => {
+            let ore = 3;
+
+            // Elemento dove mostrare il tempo
+            const display = document.getElementById('timer');
+
+            // Timestamp di fine del conto alla rovescia
+            let endTime;
+
+            const resetTimer = () => {
+                const duration = ore * 60 * 60 * 1000;
+                endTime = Date.now() + duration;
+
+                // Mostra immediatamente la nuova cifra tonda
+                display.textContent = `${String(ore).padStart(2, '0')}:00:00`;
+            }
+
+            const updateTimer = () => {
+                const now = Date.now();
+                let diff = endTime - now;
+
+                // Se è scaduto, mostra 00:00:00
+                if (diff <= 0) {
+                    display.textContent = '00:00:00';
+                    return;
+                }
+
+                // Math.ceil evita che il timer mostri subito un secondo in meno
+                diff = Math.ceil(diff / 1000) * 1000;
+
+                // Calcolo ore, minuti e secondi
+                const hours = Math.floor(diff / (1000 * 60 * 60));
+                diff -= hours * 1000 * 60 * 60;
+                const minutes = Math.floor(diff / (1000 * 60));
+                diff -= minutes * 1000 * 60;
+                const seconds = Math.floor(diff / 1000);
+
+                // Formattazione su due cifre
+                const hh = String(hours).padStart(2, '0');
+                const mm = String(minutes).padStart(2, '0');
+                const ss = String(seconds).padStart(2, '0');
+
+                display.textContent = `${hh}:${mm}:${ss}`;
+            }
+
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'ArrowUp') {
+                    event.preventDefault();
+                    ore += 1;
+                    resetTimer();
+                } else if (event.key === 'ArrowDown') {
+                    event.preventDefault();
+                    ore = Math.max(1, ore - 1);
+                    resetTimer();
+                }
+            });
+
+            resetTimer();
+            setInterval(updateTimer, 250);
+        })();
+    </script>
+
+</body>
+
+</html>
