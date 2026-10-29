@@ -54,7 +54,3 @@ Since this is a client-side application, no build process or external dependenci
 GitHub:
 
 https://github.com/MemmoIdiot/practiceTimer
-
-## License
-
-This project is available under the license specified in the repository.
