@@ -12,7 +12,6 @@ https://memmoidiot.github.io/practiceTimer/
 
 - Simple and intuitive interface
 - Custom countdown duration
-- Start, pause, and reset controls
 - Works directly in the browser
 - No installation required
 
@@ -20,10 +19,8 @@ https://memmoidiot.github.io/practiceTimer/
 
 1. Open the application.
 2. Set the desired duration for your practice session.
-3. Press **Start** to begin the countdown.
-4. Monitor the remaining time while you focus on your activity.
-5. Pause or reset the timer whenever needed.
-6. When the timer reaches zero, the session is complete.
+3. Monitor the remaining time while you focus on your activity.
+4. When the timer reaches zero, the session is complete.
 
 ## Run Locally
 
